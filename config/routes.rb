@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  apipie
   resources :country_of_origins do
     member do
       delete :delete_document_attachment
