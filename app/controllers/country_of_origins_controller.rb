@@ -74,10 +74,20 @@ before_action :authenticate_user!
     end
   end
 
+
+    
+    def delete_document_attachment
+        @document = ActiveStorage::Attachment.find(params[:id])
+        @document.purge
+        # redirect_to @current_page
+        redirect_back(fallback_location: root_path)     
+    end
+
+    
   private
 
   # Only allow a trusted parameter "white list" through.
   def country_of_origin_params
-    params.require(:country_of_origin).permit(:name, :fdate, :active_status, :sort_order)
+    params.require(:country_of_origin).permit(:name, :fdate, :active_status, :sort_order, :avatar, documents: [])
   end
 end

@@ -38,6 +38,21 @@
       </div>
         </div>
 
+  <hr>
+  <div class="field">
+    <%= f.label :avatar %>
+    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (A new choice will replace previous one.)</p>
+    <%= f.file_field :avatar %>
+  </div>
+  <br>
+  <div class="field">
+  <%= f.label :documents %>
+    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Choosing files will add to previous ones..)</p>
+    <%= f.file_field :documents, multiple: true %>
+  </div>
+  <hr>
+  
+
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit class: "btn btn-primary" %>
