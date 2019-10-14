@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
  
 
+  resources :product_features
+  resources :products
+  resources :pfeatures
+  resources :country_of_origins
   mount RailsAdmin::Engine => '/radmin', as: 'rails_admin'
   resources :roles
   devise_for :users, controllers: { sessions: 'users/sessions' }
