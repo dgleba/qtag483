@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 5016_12_30_223301) do
     t.string "unlock_token"
     t.datetime "locked_at"
     t.string "name"
-    t.bigint "role_id", default: 3
+    t.bigint "role_id"
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
