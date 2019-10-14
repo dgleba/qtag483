@@ -12,17 +12,17 @@
 
 ActiveRecord::Schema.define(version: 5016_12_30_223301) do
 
-  create_table "active_storage_attachments", force: :cascade do |t|
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 5016_12_30_223301) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "country_of_origins", force: :cascade do |t|
+  create_table "country_of_origins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "fdate"
     t.integer "active_status"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 5016_12_30_223301) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "pfeatures", force: :cascade do |t|
+  create_table "pfeatures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "fdate"
     t.integer "active_status"
@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(version: 5016_12_30_223301) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "product_features", force: :cascade do |t|
+  create_table "product_features", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.integer "product_id"
-    t.integer "pfeature_id"
+    t.bigint "product_id"
+    t.bigint "pfeature_id"
     t.integer "active_status"
     t.integer "sort_order"
     t.datetime "created_at", null: false
@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(version: 5016_12_30_223301) do
     t.index ["product_id"], name: "index_product_features_on_product_id"
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.integer "country_of_origin_id"
+    t.bigint "country_of_origin_id"
     t.datetime "pdate"
     t.integer "active_status"
     t.integer "sort_order"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 5016_12_30_223301) do
     t.index ["country_of_origin_id"], name: "index_products_on_country_of_origin_id"
   end
 
-  create_table "roles", force: :cascade do |t|
+  create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.integer "active_status"
@@ -83,18 +83,49 @@ ActiveRecord::Schema.define(version: 5016_12_30_223301) do
     t.datetime "updated_at", null: false
   end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type '' for column 'current_sign_in_ip'
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
+    t.string "name"
+    t.bigint "role_id", default: 3
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+  end
 
-  create_table "versions", force: :cascade do |t|
+  create_table "versions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "item_type", null: false
-    t.integer "item_id", limit: 8, null: false
+    t.bigint "item_id", null: false
     t.string "event", null: false
     t.string "whodunnit"
-    t.text "object", limit: 1073741823
+    t.text "object", limit: 4294967295
     t.datetime "created_at"
-    t.text "object_changes", limit: 1073741823
+    t.text "object_changes", limit: 4294967295
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "product_features", "pfeatures"
+  add_foreign_key "product_features", "products"
+  add_foreign_key "products", "country_of_origins"
+  add_foreign_key "users", "roles"
 end
