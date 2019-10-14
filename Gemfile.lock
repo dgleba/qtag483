@@ -192,6 +192,9 @@ GEM
       rails (>= 5.0, < 7)
       remotipart (~> 1.3)
       sassc-rails (>= 1.3, < 3)
+    rails_admin_material (0.2.1)
+      rails_admin (>= 0.8.1)
+    rails_admin_mydash (0.1.8)
     railties (5.2.3)
       actionpack (= 5.2.3)
       activesupport (= 5.2.3)
@@ -296,6 +299,8 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.3)
   rails_admin
+  rails_admin_material
+  rails_admin_mydash
   ransack
   sass-rails (~> 5.0)
   selenium-webdriver

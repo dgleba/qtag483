@@ -77,3 +77,7 @@ gem "devise"
 gem 'jwt'
 gem "cancancan"
 gem 'rails_admin'
+# 
+gem 'rails_admin_material'
+gem 'rails_admin_mydash'
+# 
