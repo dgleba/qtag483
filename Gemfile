@@ -64,3 +64,9 @@ gem 'faker'
 gem 'populator'
 gem 'thor'
 # 
+# 
+# # https://github.com/twbs/bootstrap-sass
+# 
+gem 'simple_form'
+gem 'boostrap-sass'
+gem 'bootstrap-sass'
