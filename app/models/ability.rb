@@ -19,7 +19,7 @@ class Ability
       # can history
     
     elsif user.lr_readonly?
-      can :read, Role
+      can :read, [ Product, Role, User]
       can :dashboard, :all
     end
     
