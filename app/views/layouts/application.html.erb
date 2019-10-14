@@ -7,6 +7,9 @@
           <title><%= Rails.application.class.parent_name %></title>
           <%= stylesheet_link_tag    'application', media: 'all' %>
           <%= javascript_include_tag 'application' %>
+
+          <%= javascript_include_tag "autocomplete-rails.js" %>
+  
           <%= csrf_meta_tags %>
         </meta>
       </meta>

@@ -10,7 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 3017_01_01_010106) do
+ActiveRecord::Schema.define(version: 3017_01_01_010110) do
+
+  create_table "country_of_origins", force: :cascade do |t|
+    t.string "name"
+    t.datetime "fdate"
+    t.integer "active_status"
+    t.integer "sort_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pfeatures", force: :cascade do |t|
+    t.string "name"
+    t.datetime "fdate"
+    t.integer "active_status"
+    t.integer "sort_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_features", force: :cascade do |t|
+    t.string "name"
+    t.integer "product_id"
+    t.integer "pfeature_id"
+    t.integer "active_status"
+    t.integer "sort_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pfeature_id"], name: "index_product_features_on_pfeature_id"
+    t.index ["product_id"], name: "index_product_features_on_product_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.integer "country_of_origin_id"
+    t.datetime "pdate"
+    t.integer "active_status"
+    t.integer "sort_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_of_origin_id"], name: "index_products_on_country_of_origin_id"
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
