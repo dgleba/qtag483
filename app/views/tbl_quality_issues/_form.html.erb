@@ -1,0 +1,365 @@
+
+<%= form_for(@tbl_quality_issue, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @tbl_quality_issue.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@tbl_quality_issue.errors.count, "error") %> prohibited this tbl_quality_issue from being saved:</h4>
+      <ul>
+      <% @tbl_quality_issue.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="form-group">
+            <%= f.label :ProblemType, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :ProblemType, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :Year, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.number_field :Year, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :Date, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.datetime_select :Date, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :PartID, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :PartID, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :Issuedby, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :Issuedby, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :OpertionHd, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :OpertionHd, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :OpertionTp, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :OpertionTp, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :OpertionSp, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :OpertionSp, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :OpertionQA, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :OpertionQA, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :Reason, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :Reason, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :ReasonNote, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_area :ReasonNote, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :Feature, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_area :Feature, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :Changed, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_area :Changed, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :Comment, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_area :Comment, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :SpecialInst, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_area :SpecialInst, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :QualityAlert, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_area :QualityAlert, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :QualityAlertMemo, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_area :QualityAlertMemo, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :Cost, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.number_field :Cost, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :NofPiecesQA, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.number_field :NofPiecesQA, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :NofPiecesHT, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.number_field :NofPiecesHT, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :MachineID, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.number_field :MachineID, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :CustomerID, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.number_field :CustomerID, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :CustomerRefNum, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :CustomerRefNum, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :DateIssued, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.datetime_select :DateIssued, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :DispositionCustomer, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :DispositionCustomer, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :DispositionStackpole, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :DispositionStackpole, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :Picture, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :Picture, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :Lengthofchange, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :Lengthofchange, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :Okdby, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :Okdby, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :ModWritten -%>
+            Modwritten
+          </label>
+        </div>
+      </div>
+      </div>
+  <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :SpecialInstWritten -%>
+            Specialinstwritten
+          </label>
+        </div>
+      </div>
+      </div>
+  <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :HoldTag -%>
+            Holdtag
+          </label>
+        </div>
+      </div>
+      </div>
+  <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :TPCTag -%>
+            Tpctag
+          </label>
+        </div>
+      </div>
+      </div>
+  <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :CertTag -%>
+            Certtag
+          </label>
+        </div>
+      </div>
+      </div>
+  <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :QualityATag -%>
+            Qualityatag
+          </label>
+        </div>
+      </div>
+      </div>
+  <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :Closed -%>
+            Closed
+          </label>
+        </div>
+      </div>
+      </div>
+  <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :Supplier_Issue -%>
+            Supplier issue
+          </label>
+        </div>
+      </div>
+      </div>
+  <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :ControlPlan -%>
+            Controlplan
+          </label>
+        </div>
+      </div>
+      </div>
+  <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :LayeredAudit -%>
+            Layeredaudit
+          </label>
+        </div>
+      </div>
+      </div>
+  <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :QualityMemo -%>
+            Qualitymemo
+          </label>
+        </div>
+      </div>
+      </div>
+  <div class="form-group">
+            <%= f.label :FeatureNumber, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :FeatureNumber, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :CurrentMinSpec, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :CurrentMinSpec, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :CurrentMaxSpec, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :CurrentMaxSpec, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :TPCMinSpec, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :TPCMinSpec, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :TPCMaxSpec, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :TPCMaxSpec, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :OperationNumber, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :OperationNumber, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :body, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :operation, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :operation, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :qty, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.number_field :qty, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :active_status, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.number_field :active_status, class: "form-control" %>
+      </div>
+        </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

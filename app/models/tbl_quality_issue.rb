@@ -1,0 +1,2 @@
+class TblQualityIssue < ApplicationRecord
+end

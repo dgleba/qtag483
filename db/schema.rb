@@ -12,6 +12,176 @@
 
 ActiveRecord::Schema.define(version: 5016_12_30_223301) do
 
+  create_table "Depts", primary_key: "DeptID", id: :integer, default: 0, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "Department", limit: 20
+    t.string "DepartmentState", limit: 20
+    t.index ["Department"], name: "Department"
+  end
+
+  create_table "DownTimeReasons", primary_key: "DownTimeReasonID", id: :integer, default: 0, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "DownTimeReasonDesc", limit: 50
+    t.index ["DownTimeReasonID"], name: "DownTimeReasonID"
+  end
+
+  create_table "Machines", primary_key: "MachineID", id: :integer, default: 0, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "DeptID", default: 0
+    t.string "MachineDesc"
+    t.integer "PlantID", default: 0
+    t.string "Stamp", limit: 16
+    t.index ["DeptID"], name: "DeptID"
+    t.index ["PlantID"], name: "PlantID"
+    t.index ["Stamp"], name: "Stamp"
+  end
+
+  create_table "Mailing List", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "MailingListID", null: false, auto_increment: true
+    t.string "FirstName", limit: 50
+    t.string "LastName", limit: 50
+    t.string "EmailAddress", limit: 50
+    t.index ["EmailAddress"], name: "EmailAddress", unique: true
+    t.index ["LastName"], name: "LastName"
+  end
+
+  create_table "Operations", primary_key: "OperationID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "Operation", limit: 40
+    t.string "OperationDecp", limit: 50
+    t.index ["Operation"], name: "Operation"
+    t.index ["OperationDecp"], name: "OperationDecp"
+    t.index ["OperationID"], name: "OperationID"
+  end
+
+  create_table "PartDepts", primary_key: "PartDeptID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "PartID", limit: 16
+    t.integer "DeptID", default: 0
+    t.integer "Sequence", default: 0
+    t.float "Cost", limit: 53, default: 0.0, null: false
+    t.float "Weightlbs", limit: 53, default: 0.0, null: false
+    t.integer "Area", default: 0
+    t.datetime "DateCost"
+    t.index ["Cost"], name: "Cost"
+    t.index ["DeptID"], name: "DeptID"
+    t.index ["PartDeptID"], name: "PartDeptID"
+    t.index ["PartID"], name: "PartID"
+    t.index ["Weightlbs"], name: "Weightlbs"
+  end
+
+  create_table "Parts", primary_key: "PartID", id: :string, limit: 16, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "Description"
+    t.boolean "RptScrap"
+    t.integer "PlantNumber", default: 0
+    t.index ["PlantNumber"], name: "PlantNumber"
+    t.index ["RptScrap"], name: "RptScrap"
+  end
+
+  create_table "ScrapReasons", primary_key: "ScrapReasonID", id: :integer, default: 0, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "ScrapReasonDesc", limit: 50
+    t.integer "OpertionID", default: 0
+    t.index ["OpertionID"], name: "OpertionID"
+    t.index ["ScrapReasonID"], name: "ScrapReasonID"
+  end
+
+  create_table "TBLQualityIssues", primary_key: "ID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "ProblemType", limit: 3
+    t.integer "Year", default: 18
+    t.datetime "Date", null: false
+    t.string "PartID", limit: 16, null: false
+    t.string "Issuedby", limit: 20, null: false
+    t.string "OpertionHd", limit: 50
+    t.string "OpertionTp", limit: 50
+    t.string "OpertionSp", limit: 50
+    t.string "OpertionQA", limit: 50
+    t.string "Reason", limit: 20
+    t.text "ReasonNote"
+    t.text "Feature"
+    t.text "Changed"
+    t.text "Comment"
+    t.text "SpecialInst"
+    t.text "QualityAlert"
+    t.text "QualityAlertMemo"
+    t.integer "Cost", default: 0
+    t.integer "NofPiecesQA", default: 0
+    t.integer "NofPiecesHT", default: 0
+    t.integer "MachineID", default: 0
+    t.integer "CustomerID", default: 0
+    t.string "CustomerRefNum", limit: 50
+    t.datetime "DateIssued"
+    t.string "DispositionCustomer", limit: 30
+    t.string "DispositionStackpole", limit: 30
+    t.binary "Picture", limit: 4294967295
+    t.float "Lengthofchange", limit: 53, default: 1.0, null: false
+    t.string "Okdby", limit: 20
+    t.boolean "ModWritten"
+    t.boolean "SpecialInstWritten"
+    t.boolean "HoldTag"
+    t.boolean "TPCTag"
+    t.boolean "CertTag"
+    t.boolean "QualityATag"
+    t.boolean "Closed"
+    t.boolean "Supplier_Issue"
+    t.boolean "ControlPlan"
+    t.boolean "LayeredAudit"
+    t.boolean "QualityMemo"
+    t.string "FeatureNumber", limit: 25
+    t.float "CurrentMinSpec", limit: 53
+    t.float "CurrentMaxSpec", limit: 53
+    t.float "TPCMinSpec", limit: 53
+    t.float "TPCMaxSpec", limit: 53
+    t.string "OperationNumber"
+    t.text "body"
+    t.string "operation", limit: 222
+    t.integer "qty"
+    t.integer "active_status"
+    t.datetime "updated_at"
+    t.datetime "created_at"
+    t.index ["Closed"], name: "Closed"
+    t.index ["Cost"], name: "Cost"
+    t.index ["CustomerID"], name: "CustomerID"
+    t.index ["CustomerRefNum"], name: "CustomerRefNum"
+    t.index ["Date"], name: "Date"
+    t.index ["DispositionCustomer"], name: "DispositionCustomer"
+    t.index ["DispositionStackpole"], name: "DispositionStackpole"
+    t.index ["Issuedby"], name: "Issuedby"
+    t.index ["MachineID"], name: "MachineID"
+    t.index ["NofPiecesHT"], name: "NofPiecesHT"
+    t.index ["NofPiecesQA"], name: "NofPiecesQA"
+    t.index ["OpertionHd"], name: "OpertionHd"
+    t.index ["OpertionQA"], name: "OpertionQA"
+    t.index ["OpertionSp"], name: "OpertionSp"
+    t.index ["OpertionTp"], name: "OpertionTp"
+    t.index ["PartID"], name: "PartID"
+    t.index ["ProblemType"], name: "ProblemType"
+    t.index ["Reason"], name: "Reason"
+  end
+
+  create_table "TblHoldTagSO", primary_key: "HTSOID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "TagNumber", default: 0
+    t.datetime "DateClosed"
+    t.string "OKtoProcessBy", limit: 8
+    t.integer "SortAmt", default: 0
+    t.string "SortBy", limit: 8
+    t.integer "ReworkAmt", default: 0
+    t.string "ReworkBy", limit: 8
+    t.integer "ScrapAmt", default: 0
+    t.string "ScrapBy", limit: 8
+    t.integer "UseAsIsAmt"
+    t.string "UseAsIsBy", limit: 8
+    t.string "AuthorizedBy", limit: 8
+    t.index ["TagNumber"], name: "TagNumber", unique: true
+  end
+
+  create_table "TblMailingPlantIssue", primary_key: "MailingPlantIssueID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "MailingListID", default: 0
+    t.integer "PlantID", default: 0
+    t.index ["MailingPlantIssueID"], name: "MailingPlantIssueID"
+    t.index ["PlantID"], name: "PlantID"
+  end
+
+  create_table "TimeSelect", primary_key: "TimeID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "Time", limit: 40
+    t.string "TimeCode", limit: 40
+    t.index ["TimeCode"], name: "TimeCode"
+  end
+
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -83,6 +253,181 @@ ActiveRecord::Schema.define(version: 5016_12_30_223301) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tbPartlOp", primary_key: "PartOp", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "PartDeptID", default: 0
+    t.integer "OpDeptID", default: 0
+    t.index ["OpDeptID"], name: "OpDeptID"
+    t.index ["PartDeptID"], name: "PartDeptID"
+  end
+
+  create_table "tblCustDispoistions", primary_key: "ID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "Dispoisition", limit: 30
+  end
+
+  create_table "tblCustomerContacts", primary_key: "CustContID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "CustomerID", default: 0
+    t.string "ContactFirstName", limit: 30
+    t.string "ContactLastName", limit: 50
+    t.string "PhoneNumber", limit: 30
+    t.string "CellNumber", limit: 30
+    t.string "ContactEmail", limit: 50
+    t.index ["ContactLastName"], name: "ContactLastName"
+    t.index ["CustomerID"], name: "CustomerID"
+  end
+
+  create_table "tblCustomerReturns", primary_key: "CustReturnID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "TagID"
+    t.string "ReturnDisposition", limit: 50
+    t.datetime "ReturnDate"
+    t.integer "ReturnAmount", default: 0
+    t.decimal "ReturnCost", precision: 19, scale: 4
+    t.decimal "EstReturnCost", precision: 19, scale: 4
+    t.text "Comments"
+    t.index ["TagID"], name: "TagID"
+  end
+
+  create_table "tblCustomerSalesReps", primary_key: "CustSalesID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "CustomerID", default: 0
+    t.string "SalesRepFirstName", limit: 30
+    t.string "SalesRepLastName", limit: 50
+    t.string "SalesRepPhoneNumber", limit: 30
+    t.string "SalesRepEmail", limit: 50
+    t.index ["CustomerID"], name: "CustomerID"
+    t.index ["SalesRepLastName"], name: "SalesRepLastName"
+  end
+
+  create_table "tblCustomerSorters", primary_key: "CustSortID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "CustomerID", default: 0
+    t.string "SortCompanyName", limit: 50
+    t.string "SortContactFirstName", limit: 30
+    t.string "SortContactLastName", limit: 50
+    t.string "SortPhoneNumber", limit: 30
+    t.string "SortEmail", limit: 50
+    t.index ["CustomerID"], name: "CustomerID"
+    t.index ["SortCompanyName"], name: "SortCompanyName"
+    t.index ["SortContactLastName"], name: "SortContactLastName"
+  end
+
+  create_table "tblCustomers", primary_key: "CustomerID", id: :integer, default: 0, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "CustName", limit: 50
+    t.string "CustLocation", limit: 50
+    t.boolean "Current", default: false
+    t.index ["CustomerID"], name: "CustomerID"
+  end
+
+  create_table "tblFSDControl", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.boolean "ForceShutDown", default: false
+  end
+
+  create_table "tblHTPCReasons", primary_key: "ID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "Reason", limit: 20
+  end
+
+  create_table "tblMthSalesValue", primary_key: "SVID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "Monthyears", limit: 25
+    t.decimal "SalesValue", precision: 19, scale: 4
+    t.string "Actual/Forcast", limit: 5
+    t.integer "Monthnuber"
+  end
+
+  create_table "tblOpDept", primary_key: "OpDeptID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "PartDeptID", default: 0
+    t.integer "OperationID", default: 0
+    t.index ["OpDeptID"], name: "OpDeptID"
+    t.index ["OperationID"], name: "OperationID"
+    t.index ["PartDeptID"], name: "PartDeptID"
+  end
+
+  create_table "tblOpMachine", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "OpMachID", null: false, auto_increment: true
+    t.integer "OperationID", default: 0
+    t.integer "MachineID"
+    t.index ["MachineID"], name: "MachineID"
+    t.index ["OpMachID"], name: "OpMachID"
+    t.index ["OperationID"], name: "OperationID"
+  end
+
+  create_table "tblOpScrapReasons", primary_key: "OpScrapReaID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "OperationID", default: 0
+    t.integer "ScrapReasonID", default: 0
+    t.index ["OpScrapReaID"], name: "OpScrapReaID"
+    t.index ["OperationID"], name: "OperationID"
+    t.index ["ScrapReasonID"], name: "ScrapReasonID"
+  end
+
+  create_table "tblPartMach", primary_key: "PartMach", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "PartDeptID", default: 0
+    t.integer "OpMachID", default: 0
+    t.index ["OpMachID"], name: "OpMachID"
+    t.index ["PartDeptID"], name: "PartDeptID"
+  end
+
+  create_table "tblPartsCustomer", primary_key: "PartCustID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "PartID", limit: 16
+    t.integer "CustID", default: 0
+    t.index ["CustID"], name: "CustID"
+    t.index ["PartCustID"], name: "PartCustID"
+    t.index ["PartID"], name: "PartID"
+  end
+
+  create_table "tblPlantNames", primary_key: "PlantID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "PlantName", limit: 25, null: false
+    t.string "PlantDescrp", limit: 50
+    t.integer "Area", default: 0
+    t.index ["PlantID"], name: "PlantID"
+  end
+
+  create_table "tblReportList", primary_key: "reportlistID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "reportname", limit: 50
+    t.string "reportdescr", limit: 50
+    t.index ["reportname"], name: "reportname"
+  end
+
+  create_table "tblReportmonths", primary_key: "monthlog", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "monthnuber", default: 0
+    t.integer "monthyear", default: 0
+    t.string "monthname", limit: 50
+    t.datetime "Monthstart"
+    t.datetime "Monthend"
+    t.integer "Monthweeks", default: 0
+    t.integer "Monthdays", default: 0
+  end
+
+  create_table "tblReportsender", primary_key: "ReportsenderID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "reportlistID", default: 0
+    t.integer "MailingListID", default: 0
+    t.index ["MailingListID"], name: "MailingListID"
+    t.index ["ReportsenderID"], name: "ReportsenderID"
+    t.index ["reportlistID"], name: "reportlistID"
+  end
+
+  create_table "tblReportsender2", primary_key: "ReportsenderID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "reportlistID", default: 0
+    t.integer "MailingListID", default: 0
+    t.index ["MailingListID"], name: "MailingListID"
+    t.index ["ReportsenderID"], name: "ReportsenderID"
+    t.index ["reportlistID"], name: "reportlistID"
+  end
+
+  create_table "tblShifts", primary_key: "Shift Number", id: :integer, default: 0, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "Shift Name", limit: 10
+    t.datetime "ShiftTimeStamp"
+    t.datetime "ShiftTimeStart"
+    t.datetime "ShiftTimeEnd"
+  end
+
+  create_table "tblSupplierChargebacks", primary_key: "ChargebackID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "TagID"
+    t.string "ReturnDisposition", limit: 50
+    t.datetime "ReturnDate"
+    t.decimal "EstReturnCost", precision: 19, scale: 4
+    t.integer "ReturnAmount", default: 0
+    t.string "CostType"
+    t.decimal "ReturnCost", precision: 19, scale: 4
+    t.text "Comments"
+    t.index ["TagID"], name: "TagID"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -99,7 +444,7 @@ ActiveRecord::Schema.define(version: 5016_12_30_223301) do
     t.string "unlock_token"
     t.datetime "locked_at"
     t.string "name"
-    t.bigint "role_id"
+    t.bigint "role_id", default: 3
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"

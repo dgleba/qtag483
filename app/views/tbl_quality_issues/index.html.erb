@@ -1,0 +1,158 @@
+
+<row class="row is-table-row" >
+
+  <div class="col-sm-1 ">
+    <%= link_to 'Create', new_tbl_quality_issue_path , class: "btn btn-success"%>
+  </div>
+
+  <div class="col-sm-2 ">
+    <h4>Listing Tbl Quality Issues</h4>
+  </div>
+
+  <div class="col-sm-3">
+    <%= search_form_for @q, class: 'search-form' do |f| %>
+      <div class="input-group">
+        <%= f.search_field :ProblemType_cont, class: 'form-control' %>
+        <span class="input-group-btn">
+          <button class="btn btn-primary">Search <i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-sm-4 ">
+    <%= paginate @tbl_quality_issues %>
+  </div>
+  
+  <div class="col-sm-2 ">
+    <%= page_entries_info @tbl_quality_issues, :entry_name => 'item' %>
+  </div>
+  
+</row>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th colspan="1"></th>
+            <th>Problemtype</th>
+      <th>Year</th>
+      <th>Date</th>
+      <th>Partid</th>
+      <th>Issuedby</th>
+      <th>Opertionhd</th>
+      <th>Opertiontp</th>
+      <th>Opertionsp</th>
+      <th>Opertionqa</th>
+      <th>Reason</th>
+      <th>Reasonnote</th>
+      <th>Feature</th>
+      <th>Changed</th>
+      <th>Comment</th>
+      <th>Specialinst</th>
+      <th>Qualityalert</th>
+      <th>Qualityalertmemo</th>
+      <th>Cost</th>
+      <th>Nofpiecesqa</th>
+      <th>Nofpiecesht</th>
+      <th>Machineid</th>
+      <th>Customerid</th>
+      <th>Customerrefnum</th>
+      <th>Dateissued</th>
+      <th>Dispositioncustomer</th>
+      <th>Dispositionstackpole</th>
+      <th>Picture</th>
+      <th>Lengthofchange</th>
+      <th>Okdby</th>
+      <th>Modwritten</th>
+      <th>Specialinstwritten</th>
+      <th>Holdtag</th>
+      <th>Tpctag</th>
+      <th>Certtag</th>
+      <th>Qualityatag</th>
+      <th>Closed</th>
+      <th>Supplier issue</th>
+      <th>Controlplan</th>
+      <th>Layeredaudit</th>
+      <th>Qualitymemo</th>
+      <th>Featurenumber</th>
+      <th>Currentminspec</th>
+      <th>Currentmaxspec</th>
+      <th>Tpcminspec</th>
+      <th>Tpcmaxspec</th>
+      <th>Operationnumber</th>
+      <th>Body</th>
+      <th>Operation</th>
+      <th>Qty</th>
+      <th>Active status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tbl_quality_issues.each do |tbl_quality_issue| %>
+      <tr>
+        <td>
+          <div class="btn-group">
+          <%= link_to 'Show', tbl_quality_issue, class: "btn btn-info", :style=>'color:#FFFFFF;' %>
+          <%= link_to 'Edit', edit_tbl_quality_issue_path(tbl_quality_issue), class: "btn btn-primary", :style=>'color:#FFFFFF;' %>
+          <% #commentedout  = link_to 'Destroy', tbl_quality_issue, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning", :style=>'color:#FFFFFF;' %>
+          </div>
+        </td>
+        
+        <td><%= tbl_quality_issue.ProblemType %></td>
+        <td><%= tbl_quality_issue.Year %></td>
+        <td><%= tbl_quality_issue.Date %></td>
+        <td><%= tbl_quality_issue.PartID %></td>
+        <td><%= tbl_quality_issue.Issuedby %></td>
+        <td><%= tbl_quality_issue.OpertionHd %></td>
+        <td><%= tbl_quality_issue.OpertionTp %></td>
+        <td><%= tbl_quality_issue.OpertionSp %></td>
+        <td><%= tbl_quality_issue.OpertionQA %></td>
+        <td><%= tbl_quality_issue.Reason %></td>
+        <td><%= tbl_quality_issue.ReasonNote %></td>
+        <td><%= tbl_quality_issue.Feature %></td>
+        <td><%= tbl_quality_issue.Changed %></td>
+        <td><%= tbl_quality_issue.Comment %></td>
+        <td><%= tbl_quality_issue.SpecialInst %></td>
+        <td><%= tbl_quality_issue.QualityAlert %></td>
+        <td><%= tbl_quality_issue.QualityAlertMemo %></td>
+        <td><%= tbl_quality_issue.Cost %></td>
+        <td><%= tbl_quality_issue.NofPiecesQA %></td>
+        <td><%= tbl_quality_issue.NofPiecesHT %></td>
+        <td><%= tbl_quality_issue.MachineID %></td>
+        <td><%= tbl_quality_issue.CustomerID %></td>
+        <td><%= tbl_quality_issue.CustomerRefNum %></td>
+        <td><%= tbl_quality_issue.DateIssued %></td>
+        <td><%= tbl_quality_issue.DispositionCustomer %></td>
+        <td><%= tbl_quality_issue.DispositionStackpole %></td>
+        <td><%= tbl_quality_issue.Picture %></td>
+        <td><%= tbl_quality_issue.Lengthofchange %></td>
+        <td><%= tbl_quality_issue.Okdby %></td>
+        <td><%= tbl_quality_issue.ModWritten %></td>
+        <td><%= tbl_quality_issue.SpecialInstWritten %></td>
+        <td><%= tbl_quality_issue.HoldTag %></td>
+        <td><%= tbl_quality_issue.TPCTag %></td>
+        <td><%= tbl_quality_issue.CertTag %></td>
+        <td><%= tbl_quality_issue.QualityATag %></td>
+        <td><%= tbl_quality_issue.Closed %></td>
+        <td><%= tbl_quality_issue.Supplier_Issue %></td>
+        <td><%= tbl_quality_issue.ControlPlan %></td>
+        <td><%= tbl_quality_issue.LayeredAudit %></td>
+        <td><%= tbl_quality_issue.QualityMemo %></td>
+        <td><%= tbl_quality_issue.FeatureNumber %></td>
+        <td><%= tbl_quality_issue.CurrentMinSpec %></td>
+        <td><%= tbl_quality_issue.CurrentMaxSpec %></td>
+        <td><%= tbl_quality_issue.TPCMinSpec %></td>
+        <td><%= tbl_quality_issue.TPCMaxSpec %></td>
+        <td><%= tbl_quality_issue.OperationNumber %></td>
+        <td><%= tbl_quality_issue.body %></td>
+        <td><%= tbl_quality_issue.operation %></td>
+        <td><%= tbl_quality_issue.qty %></td>
+        <td><%= tbl_quality_issue.active_status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

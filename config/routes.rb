@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :tbl_quality_issues
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   apipie
