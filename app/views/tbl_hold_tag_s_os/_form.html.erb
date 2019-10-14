@@ -1,0 +1,93 @@
+
+<%= form_for(@tbl_hold_tag_so, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @tbl_hold_tag_so.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@tbl_hold_tag_so.errors.count, "error") %> prohibited this tbl_hold_tag_so from being saved:</h4>
+      <ul>
+      <% @tbl_hold_tag_so.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="form-group">
+            <%= f.label :TagNumber, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.number_field :TagNumber, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :DateClosed, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.datetime_select :DateClosed, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :OKtoProcessBy, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :OKtoProcessBy, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :SortAmt, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.number_field :SortAmt, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :SortBy, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :SortBy, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :ReworkAmt, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.number_field :ReworkAmt, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :ReworkBy, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :ReworkBy, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :ScrapAmt, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.number_field :ScrapAmt, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :ScrapBy, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :ScrapBy, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :UseAsIsAmt, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.number_field :UseAsIsAmt, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :UseAsIsBy, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :UseAsIsBy, class: "form-control" %>
+      </div>
+        </div>
+  <div class="form-group">
+            <%= f.label :AuthorizedBy, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+        <%= f.text_field :AuthorizedBy, class: "form-control" %>
+      </div>
+        </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
