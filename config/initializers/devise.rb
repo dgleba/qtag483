@@ -16,6 +16,11 @@ Devise.setup do |config|
   # config.ldap_ad_group_check = false
 
 
+  config.ldap_create_user = true
+  config.ldap_auth_username_builder = Proc.new() {|attribute, login, ldap| "#{login}@stackpole.ca"}
+  
+
+
 
   config.warden do |manager|
    # Registering your new Strategy
