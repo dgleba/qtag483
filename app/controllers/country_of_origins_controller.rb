@@ -1,21 +1,13 @@
 class CountryOfOriginsController < ApplicationController
-before_action :authenticate_user!
-  #
+  before_action :authenticate_user!
   autocomplete :pfeature, :name, :full => true
+  #
 
 
   #cancancan
   load_and_authorize_resource
   # before_action :set_country_of_origin, only: [:show, :edit, :update, :destroy]
   #
-  autocomplete :pfeature, :name, :full => true
-
-
-  #cancancan
-  load_and_authorize_resource
-
-  #cancancan
-  load_and_authorize_resource
 
 
   # cancancan..

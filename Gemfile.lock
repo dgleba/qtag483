@@ -352,6 +352,7 @@ DEPENDENCIES
   faker
   figaro
   jbuilder (~> 2.5)
+  jquery-rails
   jquery-ui-rails
   jwt
   kaminari

@@ -14,10 +14,10 @@
  *= require_self
   *= require select2
   *= require select2-bootstrap
+  *= require jquery-ui
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 
 // Copy this into application.scss
 //
@@ -25,7 +25,6 @@
 //
 
 .ui-autocomplete {
-
   position: absolute;
   top: 100%;
   left: 0;
@@ -54,7 +53,7 @@
   *border-right-width: 2px;
   *border-bottom-width: 2px;
   line-height: 200%;
- 
+
   .ui-menu-item > a.ui-corner-all {
     display: block;
     padding: 5px 15px;
@@ -63,12 +62,11 @@
     line-height: 300%;
     color: #555555;
     white-space: nowrap;
-      line-height: 200%;
+    line-height: 200%;
   }
 }
 
 .ui-widget-content .ui-state-focus {
-
   color: #ffffff;
   text-decoration: none;
   background-color: #0088cc;
@@ -76,11 +74,10 @@
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   background-image: none;
-line-height: 500%;
+  line-height: 500%;
 }
 
 .ui-autocomplete-input {
-
   min-width: 160px;
   width: 100%;
   border-radius: 4px;
@@ -91,4 +88,3 @@ line-height: 500%;
 //
 // end bigtunacan jquery ui autocomplete
 //
-

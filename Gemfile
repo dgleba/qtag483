@@ -95,6 +95,7 @@ gem 'select2-rails'
 # https://github.com/yifeiwu/rails4-autocomplete-demo
 gem 'rails-jquery-autocomplete'
 gem 'jquery-ui-rails'
+gem 'jquery-rails'
 # 
 gem 'mini_magick'
 gem 'apipie-rails'
