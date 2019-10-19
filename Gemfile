@@ -100,4 +100,4 @@ gem 'jquery-rails'
 gem 'mini_magick'
 gem 'apipie-rails'
 
-gem 'rswag'
+gem 'rswag'gem 'rack-cors'
