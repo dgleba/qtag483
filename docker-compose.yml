@@ -28,7 +28,7 @@ services:
       - RAILS_ENV=development
       # - RAILS_LOG_TO_STDOUT=1
     ports:
-      - 6035:3000
+      - 6036:3000
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     #
     # command: bash -c  "bundle check || bundle install --jobs 40 --retry 5 \

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :tbl_htpc_reasons
   resources :tbl_hold_tag_sos
   resources :tbl_quality_issues
   mount Rswag::Ui::Engine => '/api-docs'
