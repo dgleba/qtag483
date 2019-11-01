@@ -1,0 +1,24 @@
+
+<p>
+  <strong>Deptid:</strong>
+  <%= @machine.DeptID %>
+</p>
+
+<p>
+  <strong>Machinedesc:</strong>
+  <%= @machine.MachineDesc %>
+</p>
+
+<p>
+  <strong>Plantid:</strong>
+  <%= @machine.PlantID %>
+</p>
+
+<p>
+  <strong>Stamp:</strong>
+  <%= @machine.Stamp %>
+</p>
+
+<br>
+<%= link_to 'Edit', edit_machine_path(@machine), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
+<%= link_to 'Back', machines_path, class: "btn btn-default" %>

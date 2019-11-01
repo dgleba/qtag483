@@ -1,0 +1,14 @@
+
+<p>
+  <strong>Operation:</strong>
+  <%= @operation.Operation %>
+</p>
+
+<p>
+  <strong>Operationdecp:</strong>
+  <%= @operation.OperationDecp %>
+</p>
+
+<br>
+<%= link_to 'Edit', edit_operation_path(@operation), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
+<%= link_to 'Back', operations_path, class: "btn btn-default" %>

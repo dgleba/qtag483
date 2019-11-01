@@ -1,0 +1,19 @@
+
+<p>
+  <strong>Description:</strong>
+  <%= @part.Description %>
+</p>
+
+<p>
+  <strong>Rptscrap:</strong>
+  <%= @part.RptScrap %>
+</p>
+
+<p>
+  <strong>Plantnumber:</strong>
+  <%= @part.PlantNumber %>
+</p>
+
+<br>
+<%= link_to 'Edit', edit_part_path(@part), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
+<%= link_to 'Back', parts_path, class: "btn btn-default" %>

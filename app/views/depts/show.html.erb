@@ -1,0 +1,14 @@
+
+<p>
+  <strong>Department:</strong>
+  <%= @dept.Department %>
+</p>
+
+<p>
+  <strong>Departmentstate:</strong>
+  <%= @dept.DepartmentState %>
+</p>
+
+<br>
+<%= link_to 'Edit', edit_dept_path(@dept), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
+<%= link_to 'Back', depts_path, class: "btn btn-default" %>

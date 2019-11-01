@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :parts
+  resources :operations
+  resources :machines
+  resources :depts
   resources :tbl_htpc_reasons
   resources :tbl_hold_tag_sos
   resources :tbl_quality_issues
