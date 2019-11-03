@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :healthchecks
   resources :parts
   resources :operations
   resources :machines

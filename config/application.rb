@@ -10,7 +10,7 @@ Bundler.require(*Rails.groups)
 
 
 
-module Brail484b48
+module Qtag486
   class Application < Rails::Application
 
     config.middleware.insert_before 0, Rack::Cors do

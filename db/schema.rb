@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 5016_12_30_223301) do
+ActiveRecord::Schema.define(version: 5016_12_30_223302) do
 
   create_table "Depts", primary_key: "DeptID", id: :integer, default: 0, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "Department", limit: 20
@@ -217,6 +217,19 @@ ActiveRecord::Schema.define(version: 5016_12_30_223301) do
     t.string "colour"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "healthchecks", options: "ENGINE=InnoDB DEFAULT CHARSET=ascii", force: :cascade do |t|
+    t.string "name"
+    t.string "ip_address"
+    t.string "username"
+    t.bigint "user_id"
+    t.string "comment"
+    t.integer "active_status"
+    t.integer "sort_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_healthchecks_on_user_id"
   end
 
   create_table "pfeatures", options: "ENGINE=InnoDB DEFAULT CHARSET=ascii", force: :cascade do |t|
@@ -476,6 +489,7 @@ ActiveRecord::Schema.define(version: 5016_12_30_223301) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "healthchecks", "users"
   add_foreign_key "product_features", "pfeatures"
   add_foreign_key "product_features", "products"
   add_foreign_key "products", "country_of_origins"

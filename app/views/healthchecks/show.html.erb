@@ -1,0 +1,39 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @healthcheck.name %>
+</p>
+
+<p>
+  <strong>Ip address:</strong>
+  <%= @healthcheck.ip_address %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @healthcheck.username %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @healthcheck.user %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @healthcheck.comment %>
+</p>
+
+<p>
+  <strong>Active status:</strong>
+  <%= @healthcheck.active_status %>
+</p>
+
+<p>
+  <strong>Sort order:</strong>
+  <%= @healthcheck.sort_order %>
+</p>
+
+<br>
+<%= link_to 'Edit', edit_healthcheck_path(@healthcheck), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
+<%= link_to 'Back', healthchecks_path, class: "btn btn-default" %>
