@@ -21,6 +21,12 @@ class CountryOfOriginsController < ApplicationController
 
   # GET /country_of_origins/1
   def show
+    # https://stackoverflow.com/questions/49890851/rails-5-2-rest-api-active-storage-react-add-attachment-url-to-controller-r
+    # not sure how to use this.
+    # render json: @country_of_origin, include: [{avatar: {include: {documents: {include: {attachments: {include: {blob: {methods: :service_url} } } } } }}}]
+
+    render json: @country_of_origin, methods: :avatar_url
+
   end
 
   # GET /country_of_origins/new
