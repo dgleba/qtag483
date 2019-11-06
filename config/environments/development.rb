@@ -1,4 +1,11 @@
 Rails.application.configure do
+
+
+  # Issue: Cannot render console from 10.4.11.157! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255 rails
+  # https://stackoverflow.com/questions/29417328/how-to-disable-cannot-render-console-from-on-rails
+  config.web_console.whiny_requests = false
+
+
   config.active_storage.service = :local
   # Settings specified here will take precedence over those in config/application.rb.
 

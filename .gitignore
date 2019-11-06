@@ -30,6 +30,8 @@ db/yamldb/
 db/yamldb_date/
 /db/export
 CI-Lists/
+storage/
+
 
 # mac stuff..
 
