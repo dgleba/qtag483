@@ -34,6 +34,7 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  # https://laurentbois.wordpress.com/2007/10/20/activemailer-using-msmtp-and-gmail/
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
@@ -62,7 +63,8 @@ Rails.application.configure do
   
   
   
-  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :msmtp
   # SMTP settings for
   #10.5.1.210  # MESG01.stackpole.ca
   # works..
@@ -83,8 +85,8 @@ Rails.application.configure do
   # :enable_starttls_auto => true
   # } 
   
-  #for devise.. 2016-07-22_Fri_14.52-PM David Gleba
+  #for devise forgot password.. 2016-07-22_Fri_14.52-PM David Gleba
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }  
-  config.action_mailer.default_url_options = { host: '10.4.1.228', port: 3001 }  
+  config.action_mailer.default_url_options = { host: '10.4.1.228', port: 6034 }  
 
 end
