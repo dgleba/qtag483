@@ -10,6 +10,7 @@ version: "3.6"
 
 services:
   web:
+    hostname: brail484b53.local
     build:
       context: .
       dockerfile: ./docker/app.Dockerfile

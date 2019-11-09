@@ -2,6 +2,16 @@
 # One liners and simple stuff may be here in this makefile. See sc folder for scripts.
 # run scripts from project folder like this --  sc/cl
 
+lrm:
+	# remove images built by this compose file. remove local images to start clean.
+	 docker-compose down --remove-orphans --rmi all
+		# seperately, you could remove volumes. But do that manually so we don't remove data without thinking.
+
+m7:
+	docker-compose exec  web /bin/bash -c ' cat /app/docker/mail21.txt | msmtp dgleba@stackpole.com dgleba@stackpole.ca  '
+
+sh:
+	docker-compose  exec web /bin/bash
 
   
 devup:  
