@@ -1,0 +1,19 @@
+
+<p>
+  <strong>Custname:</strong>
+  <%= @tbl_customer.CustName %>
+</p>
+
+<p>
+  <strong>Custlocation:</strong>
+  <%= @tbl_customer.CustLocation %>
+</p>
+
+<p>
+  <strong>Current:</strong>
+  <%= @tbl_customer.Current %>
+</p>
+
+<br>
+<%= link_to 'Edit', edit_tbl_customer_path(@tbl_customer), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
+<%= link_to 'Back', tbl_customers_path, class: "btn btn-default" %>
