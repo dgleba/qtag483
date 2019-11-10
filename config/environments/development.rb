@@ -63,8 +63,10 @@ Rails.application.configure do
   
   
   
-  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.delivery_method = :msmtp # no joy. cant figure how to tell rails how to handle this.
+  config.action_mailer.delivery_method = :sendmail
+  
   # SMTP settings for
   #10.5.1.210  # MESG01.stackpole.ca
   # works..
@@ -87,6 +89,6 @@ Rails.application.configure do
   
   #for devise forgot password.. 2016-07-22_Fri_14.52-PM David Gleba
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }  
-  config.action_mailer.default_url_options = { host: '10.4.1.228', port: 6034 }  
+  config.action_mailer.default_url_options = { host: '10.4.1.228', port: 6036 }  
 
 end
