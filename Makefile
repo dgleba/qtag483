@@ -7,6 +7,9 @@ lrm:
 	 docker-compose down --remove-orphans --rmi all
 		# seperately, you could remove volumes. But do that manually so we don't remove data without thinking.
 
+m8:
+	docker-compose exec  web /bin/bash -c ' echo "Test mail qtag dkr" | mail  -r dgleba@stackpole.com -s "Test mail 601"  dgleba@stackpole.com  '
+
 m7:
 	docker-compose exec  web /bin/bash -c ' cat /app/docker/mail21.txt | msmtp dgleba@stackpole.com dgleba@stackpole.ca  '
 
