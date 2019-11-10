@@ -12,7 +12,13 @@
   <div class="col-sm-3">
     <%= search_form_for @q, class: 'search-form' do |f| %>
       <div class="input-group">
-        <%= f.search_field :ProblemType_cont, class: 'form-control' %>
+        <%= f.search_field :id_cont, class: 'form-control',  placeholder: "Tag number search .."  %>
+        <%= f.search_field :date_cont, class: 'form-control',  placeholder: "string in `Date` search - like 2019-09 "  %>
+        <%= f.search_field :Issuedby_cont, class: 'form-control',  placeholder: "Issuedby search .."  %>
+        <%= f.search_field :PartID_cont, class: 'form-control' ,  placeholder: "Partid search .." %>
+        <%= f.search_field text_qualityissues_cont, class: 'form-control',  placeholder: "text fields search .." %>
+        <%= f.search_field :PartID_or_Issuedby_or_OpertionHd_or_OpertionTp_or_OpertionSp_or_OpertionQA_or_Reason_or_Feature_cont_any,
+                    class: 'form-control',  placeholder: "PartID Issuedby Opertion.. Reason Feature search .." %>
         <span class="input-group-btn">
           <button class="btn btn-primary">Search <i class="fa fa-search"></i>
           </button>
@@ -37,53 +43,30 @@
     <tr>
       <th colspan="1"></th>
             <th>Problemtype</th>
-      <th>Year</th>
+      <th>ID</th>
       <th>Date</th>
       <th>Partid</th>
       <th>Issuedby</th>
-      <th>Opertionhd</th>
-      <th>Opertiontp</th>
-      <th>Opertionsp</th>
-      <th>Opertionqa</th>
+      <th>Op hd</th>
       <th>Reason</th>
       <th>Reasonnote</th>
       <th>Feature</th>
       <th>Changed</th>
       <th>Comment</th>
-      <th>Specialinst</th>
-      <th>Qualityalert</th>
-      <th>Qualityalertmemo</th>
-      <th>Cost</th>
-      <th>Nofpiecesqa</th>
-      <th>Nofpiecesht</th>
-      <th>Machineid</th>
-      <th>Customerid</th>
-      <th>Customerrefnum</th>
-      <th>Dateissued</th>
-      <th>Dispositioncustomer</th>
-      <th>Dispositionstackpole</th>
-      <th>Picture</th>
-      <th>Lengthofchange</th>
+      <th>Spec inst</th>
+      <th>Q alert</th>
+      <th>No qa</th>
+      <th>No ht</th>
+      <th>Machine</th>
+      <th>Len chg</th>
       <th>Okdby</th>
-      <th>Modwritten</th>
-      <th>Specialinstwritten</th>
       <th>Holdtag</th>
       <th>Tpctag</th>
       <th>Certtag</th>
-      <th>Qualityatag</th>
+      <th>Q atag</th>
       <th>Closed</th>
-      <th>Supplier issue</th>
-      <th>Controlplan</th>
-      <th>Layeredaudit</th>
-      <th>Qualitymemo</th>
-      <th>Featurenumber</th>
-      <th>Currentminspec</th>
-      <th>Currentmaxspec</th>
-      <th>Tpcminspec</th>
-      <th>Tpcmaxspec</th>
-      <th>Operationnumber</th>
       <th>Body</th>
-      <th>Operation</th>
+      <th>Op</th>
       <th>Qty</th>
       <th>Active status</th>
     </tr>
@@ -101,14 +84,11 @@
         </td>
         
         <td><%= tbl_quality_issue.ProblemType %></td>
-        <td><%= tbl_quality_issue.Year %></td>
+        <td><%= tbl_quality_issue.ID %></td>
         <td><%= tbl_quality_issue.Date %></td>
         <td><%= tbl_quality_issue.PartID %></td>
         <td><%= tbl_quality_issue.Issuedby %></td>
         <td><%= tbl_quality_issue.OpertionHd %></td>
-        <td><%= tbl_quality_issue.OpertionTp %></td>
-        <td><%= tbl_quality_issue.OpertionSp %></td>
-        <td><%= tbl_quality_issue.OpertionQA %></td>
         <td><%= tbl_quality_issue.Reason %></td>
         <td><%= tbl_quality_issue.ReasonNote %></td>
         <td><%= tbl_quality_issue.Feature %></td>
@@ -116,36 +96,16 @@
         <td><%= tbl_quality_issue.Comment %></td>
         <td><%= tbl_quality_issue.SpecialInst %></td>
         <td><%= tbl_quality_issue.QualityAlert %></td>
-        <td><%= tbl_quality_issue.QualityAlertMemo %></td>
-        <td><%= tbl_quality_issue.Cost %></td>
         <td><%= tbl_quality_issue.NofPiecesQA %></td>
         <td><%= tbl_quality_issue.NofPiecesHT %></td>
         <td><%= tbl_quality_issue.MachineID %></td>
-        <td><%= tbl_quality_issue.CustomerID %></td>
-        <td><%= tbl_quality_issue.CustomerRefNum %></td>
-        <td><%= tbl_quality_issue.DateIssued %></td>
-        <td><%= tbl_quality_issue.DispositionCustomer %></td>
-        <td><%= tbl_quality_issue.DispositionStackpole %></td>
-        <td><%= tbl_quality_issue.Picture %></td>
         <td><%= tbl_quality_issue.Lengthofchange %></td>
         <td><%= tbl_quality_issue.Okdby %></td>
-        <td><%= tbl_quality_issue.ModWritten %></td>
-        <td><%= tbl_quality_issue.SpecialInstWritten %></td>
         <td><%= tbl_quality_issue.HoldTag %></td>
         <td><%= tbl_quality_issue.TPCTag %></td>
         <td><%= tbl_quality_issue.CertTag %></td>
         <td><%= tbl_quality_issue.QualityATag %></td>
         <td><%= tbl_quality_issue.Closed %></td>
-        <td><%= tbl_quality_issue.Supplier_Issue %></td>
-        <td><%= tbl_quality_issue.ControlPlan %></td>
-        <td><%= tbl_quality_issue.LayeredAudit %></td>
-        <td><%= tbl_quality_issue.QualityMemo %></td>
-        <td><%= tbl_quality_issue.FeatureNumber %></td>
-        <td><%= tbl_quality_issue.CurrentMinSpec %></td>
-        <td><%= tbl_quality_issue.CurrentMaxSpec %></td>
-        <td><%= tbl_quality_issue.TPCMinSpec %></td>
-        <td><%= tbl_quality_issue.TPCMaxSpec %></td>
-        <td><%= tbl_quality_issue.OperationNumber %></td>
         <td><%= tbl_quality_issue.body %></td>
         <td><%= tbl_quality_issue.operation %></td>
         <td><%= tbl_quality_issue.qty %></td>

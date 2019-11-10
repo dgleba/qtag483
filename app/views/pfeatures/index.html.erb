@@ -12,7 +12,8 @@
   <div class="col-sm-3">
     <%= search_form_for @q, class: 'search-form' do |f| %>
       <div class="input-group">
-        <%= f.search_field :name_cont, class: 'form-control' %>
+        <%= f.search_field :name_cont, class: 'form-control', placeholder: "name search .."  %>
+        <%= f.search_field :id_cont, class: 'form-control', placeholder: "id search .."  %>
         <span class="input-group-btn">
           <button class="btn btn-primary">Search <i class="fa fa-search"></i>
           </button>
@@ -40,6 +41,8 @@
       <th>Fdate</th>
       <th>Active status</th>
       <th>Sort order</th>
+      <th>id</th>
+      <th>Updated</th>
     </tr>
   </thead>
 
@@ -58,6 +61,8 @@
         <td><%= pfeature.fdate %></td>
         <td><%= pfeature.active_status %></td>
         <td><%= pfeature.sort_order %></td>
+        <td><%= pfeature.id %></td>
+        <td><%= pfeature.updated_at %></td>
       </tr>
     <% end %>
   </tbody>

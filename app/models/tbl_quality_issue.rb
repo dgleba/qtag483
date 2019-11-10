@@ -9,4 +9,19 @@ class TblQualityIssue < ApplicationRecord
   #default_scope { order('date_time DESC') }
   #default_scope ->{ order('date_time DESC') }
 
+
+  # Cast numbers to string so ransacker can search them like text
+
+  # Cast the ID column to a string in mysql when searching with Ransack.
+  # Allows searches with _cont and _eq predicates.  # From https://github.com/ernie/ransack/issues/224
+  ransacker :id do
+    Arel.sql("CAST(`ID` AS CHAR)")
+  end  
+
+  ransacker :date do
+    Arel.sql("CAST(`Date` AS CHAR)")
+  end  
+
+
 end
+
