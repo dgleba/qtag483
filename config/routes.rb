@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  # send email by button click on show  form...
+    # get :product_email, to: 'products#product_email', as: :product_email
+  get :holdtag_email, to: 'tbl_quality_issues#holdtag_email', as: :holdtag_email
+
   resources :tbl_customers
   resources :healthchecks
   resources :parts
@@ -18,20 +22,16 @@ Rails.application.routes.draw do
     end
     get :autocomplete_pfeature_name, :on => :collection
   end
-  
  
-
   resources :product_features
   resources :products
   resources :pfeatures
-
 
   mount RailsAdmin::Engine => '/radmin', as: 'rails_admin'
   resources :roles
   devise_for :users, controllers: { sessions: 'users/sessions' }
   
   root "home#index"
-
 
   get 'home/index'
   get 'home/about'

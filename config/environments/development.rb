@@ -63,8 +63,8 @@ Rails.application.configure do
   
   
   
-  # config.action_mailer.delivery_method = :smtp
-  config.action_mailer.delivery_method = :msmtp
+  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.delivery_method = :msmtp # no joy. cant figure how to tell rails how to handle this.
   # SMTP settings for
   #10.5.1.210  # MESG01.stackpole.ca
   # works..

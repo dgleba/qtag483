@@ -1,5 +1,9 @@
 
-<p>
+
+  <%= link_to "Send HoldTag test email", :controller => "tbl_quality_issues", :action => "holdtag_email", :id => @tbl_quality_issue.id  %>
+  <br><br>
+
+  <p>
   <strong>Problemtype:</strong>
   <%= @tbl_quality_issue.ProblemType %>
 </p>

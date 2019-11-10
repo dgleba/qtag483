@@ -5,15 +5,18 @@ before_action :authenticate_user!
   load_and_authorize_resource
   # before_action :set_tbl_quality_issue, only: [:show, :edit, :update, :destroy]
 
-  #cancancan
-  load_and_authorize_resource
-
-  #cancancan
-  load_and_authorize_resource
-
-
   # cancancan..
   #load_and_authorize_resource :tbl_quality_issue
+
+  
+  def holdtag_email
+    #authorize! :manage, ???
+    @tbl_quality_issue = TblQualityIssue.find(params[:id])
+  
+    HoldtagMailer.holdtag_email(@tbl_quality_issue).deliver
+    flash[:notice] = "Email has been sent. [a-11-324]"
+    redirect_to tbl_quality_issue_path(@tbl_quality_issue.id)
+  end
 
   # GET /tbl_quality_issues
   def index
