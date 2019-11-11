@@ -42,5 +42,9 @@ make -C /etc/mail
 
 /etc/init.d/sendmail reload 
 
+if [ -f tmp/pids/server.pid ]; then
+  rm tmp/pids/server.pid
+fi
+
 echo "Running command $*"
 exec "$@"
