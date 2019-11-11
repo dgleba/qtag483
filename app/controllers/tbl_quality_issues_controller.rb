@@ -36,7 +36,7 @@ before_action :authenticate_user!
   def show
     respond_to do |format|
         format.html
-        format.json { render json: @tbl_quality_issue, methods: [ :picture01_url, :picture02_url, :documents0_url, :documents_url ] }
+        format.json { render json: @tbl_quality_issue, methods: [ :picture01_url, :picture02_url, :documents_url, :documenturls ] }
     end    
   end
 

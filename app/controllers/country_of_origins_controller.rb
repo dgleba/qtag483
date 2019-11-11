@@ -28,7 +28,7 @@ class CountryOfOriginsController < ApplicationController
 
     respond_to do |format|
         format.html
-        format.json { render json: @country_of_origin, methods: :avatar_url }
+        format.json { render json: @country_of_origin, methods: [ :avatar_url, :documents0_url, :documents_url, :documenturls ] }
     end
   end
 

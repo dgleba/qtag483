@@ -37,8 +37,7 @@ class TblQualityIssue < ApplicationRecord
     end
   end
 
-
-  def documents_url
+  def documents9_url
     j=0
     docs = []
     docu = []
@@ -56,6 +55,44 @@ class TblQualityIssue < ApplicationRecord
     end
   end
 
+  # https://stackoverflow.com/questions/52046957/rails-undefined-method-signed-id-for-activestorageattachedmanycasualid
+  # <% @sostituzione.allegati.each do |allegato| %>
+  # <div class="level">
+  #   <%= link_to 'Scarica documento allegato', rails_blob_path(allegato, only_path: true), class: 'button is-primary is-big' %>
+  # </div>
+  # <% end %>
+
+  def documents_url
+    if self.documents.attached?
+      self.documents.each do |allegato|
+        Rails.application.routes.url_helpers.rails_blob_path(allegato, only_path: true)
+      end  
+    else
+      nil
+    end
+  end
+
+
+  # https://stackoverflow.com/questions/50473730/rails-5-2-api-activestorage-how-to-get-url-paths-for-multi-image
+  # activestorage api-only has_many_attached download many attachments
+  def documenturls91
+    return unless object.documents.attachments
+    document_urls = object.documents.map do |adoc| 
+      URI.join(
+        ActionController::Base.asset_host, 
+        rails_blob_path(adoc))
+    end
+  end
+
+  def documenturls
+    if self.documents.attached?
+      document_urls = self.documents.map do |adoc| 
+          Rails.application.routes.url_helpers.rails_blob_path(adoc, disposition: "attachment", only_path: true)
+      end 
+    else
+      nil
+    end    
+  end
 
 
   # Cast numbers to string so ransacker can search them like text
