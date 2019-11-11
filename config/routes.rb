@@ -12,10 +12,17 @@ Rails.application.routes.draw do
   resources :depts
   resources :tbl_htpc_reasons
   resources :tbl_hold_tag_sos
-  resources :tbl_quality_issues
+  
+  resources :tbl_quality_issues do
+    member do
+      delete :delete_document_attachment
+    end
+  end
+
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   apipie
+
   resources :country_of_origins do
     member do
       delete :delete_document_attachment

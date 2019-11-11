@@ -9,6 +9,54 @@ class TblQualityIssue < ApplicationRecord
   #default_scope { order('date_time DESC') }
   #default_scope ->{ order('date_time DESC') }
 
+  has_one_attached :picture01
+  has_one_attached :picture02
+  has_many_attached :documents
+
+  def picture01_url
+    if self.picture01.attached?
+      Rails.application.routes.url_helpers.rails_blob_path(self.picture01, only_path: true)
+    else
+      nil
+    end
+  end
+
+  def picture02_url
+    if self.picture02.attached?
+      Rails.application.routes.url_helpers.rails_blob_path(self.picture02, only_path: true)
+    else
+      nil
+    end
+  end
+
+  def documents0_url
+    if self.documents.attached?
+      Rails.application.routes.url_helpers.rails_blob_path(self.documents[0], only_path: true)
+    else
+      nil
+    end
+  end
+
+
+  def documents_url
+    j=0
+    docs = []
+    docu = []
+    if self.documents.attached?
+      self.documents.each_with_index do |document,i| 
+        Rails.application.routes.url_helpers.rails_blob_path(documents[i], only_path: true)
+        # documents += Rails.application.routes.url_helpers.rails_blob_path(documents[i], only_path: true)
+        j = j + 1
+      end
+      # j.times do 
+      #  docs += Rails.application.routes.url_helpers.rails_blob_path(self.documents[j], only_path: true)
+      # end  
+    else
+      nil
+    end
+  end
+
+
 
   # Cast numbers to string so ransacker can search them like text
 

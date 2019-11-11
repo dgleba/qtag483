@@ -18,6 +18,14 @@ before_action :authenticate_user!
     redirect_to tbl_quality_issue_path(@tbl_quality_issue.id)
   end
 
+  def delete_document_attachment
+      @document = ActiveStorage::Attachment.find(params[:id])
+      @document.purge
+      # redirect_to @current_page
+      redirect_back(fallback_location: root_path)     
+  end
+
+
   # GET /tbl_quality_issues
   def index
     @q = @tbl_quality_issues.search params[:q]
@@ -26,6 +34,10 @@ before_action :authenticate_user!
 
   # GET /tbl_quality_issues/1
   def show
+    respond_to do |format|
+        format.html
+        format.json { render json: @tbl_quality_issue, methods: [ :picture01_url, :picture02_url, :documents0_url, :documents_url ] }
+    end    
   end
 
   # GET /tbl_quality_issues/new
@@ -75,6 +87,11 @@ before_action :authenticate_user!
 
   # Only allow a trusted parameter "white list" through.
   def tbl_quality_issue_params
-    params.require(:tbl_quality_issue).permit(:ProblemType, :Year, :Date, :PartID, :Issuedby, :OpertionHd, :OpertionTp, :OpertionSp, :OpertionQA, :Reason, :ReasonNote, :Feature, :Changed, :Comment, :SpecialInst, :QualityAlert, :QualityAlertMemo, :Cost, :NofPiecesQA, :NofPiecesHT, :MachineID, :CustomerID, :CustomerRefNum, :DateIssued, :DispositionCustomer, :DispositionStackpole, :Picture, :Lengthofchange, :Okdby, :ModWritten, :SpecialInstWritten, :HoldTag, :TPCTag, :CertTag, :QualityATag, :Closed, :Supplier_Issue, :ControlPlan, :LayeredAudit, :QualityMemo, :FeatureNumber, :CurrentMinSpec, :CurrentMaxSpec, :TPCMinSpec, :TPCMaxSpec, :OperationNumber, :body, :operation, :qty, :active_status)
+    params.require(:tbl_quality_issue).permit(:ProblemType, :Year, :Date, :PartID, :Issuedby, :OpertionHd, :OpertionTp, :OpertionSp, 
+    :OpertionQA, :Reason, :ReasonNote, :Feature, :Changed, :Comment, :SpecialInst, :QualityAlert, :QualityAlertMemo, :Cost, 
+    :NofPiecesQA, :NofPiecesHT, :MachineID, :CustomerID, :CustomerRefNum, :DateIssued, :DispositionCustomer, :DispositionStackpole,
+     :Picture, :Lengthofchange, :Okdby, :ModWritten, :SpecialInstWritten, :HoldTag, :TPCTag, :CertTag, :QualityATag, :Closed, 
+     :Supplier_Issue, :ControlPlan, :LayeredAudit, :QualityMemo, :FeatureNumber, :CurrentMinSpec, :CurrentMaxSpec, :TPCMinSpec, 
+     :TPCMaxSpec, :OperationNumber, :body, :operation, :qty, :active_status, :picture01, :picture02, documents: [])
   end
 end
