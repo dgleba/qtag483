@@ -28,7 +28,8 @@ class CountryOfOriginsController < ApplicationController
 
     respond_to do |format|
         format.html
-        format.json { render json: @country_of_origin, methods: [ :avatar_url, :documents0_url, :documents_url, :documenturls ] }
+        format.json { render json: @country_of_origin, 
+          methods: [ :avatar_url, :documents0_url, :documents_url, :documenturls, :documentremove ] }
     end
   end
 
@@ -77,12 +78,15 @@ class CountryOfOriginsController < ApplicationController
 
 
     
-    def delete_document_attachment
-        @document = ActiveStorage::Attachment.find(params[:id])
-        @document.purge
-        # redirect_to @current_page
-        redirect_back(fallback_location: root_path)     
+  def delete_document_attachment
+    @document = ActiveStorage::Attachment.find(params[:id])
+    @document.purge
+    respond_to do |format|
+        format.html { redirect_back(fallback_location: root_path)  } 
+          # redirect_to @current_page
+        format.json { render :show, status: :ok, location: @country_of_origin }
     end
+  end
 
     
   private

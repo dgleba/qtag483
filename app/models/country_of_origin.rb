@@ -60,6 +60,18 @@ class CountryOfOrigin < ApplicationRecord
     end    
   end
 
+  def documentremove
+    if self.documents.attached?
+      document_urls = self.documents.map do |adoc| 
+          Rails.application.routes.url_helpers.delete_document_attachment_country_of_origin_url(adoc, only_path: true)
+      end 
+    else
+      nil
+    end    
+  end
+
+
+
 # notes
 # undefined method `signed_id' for #<ActiveStorage::Attached::Many:0x00007fa6b5599d50>
 

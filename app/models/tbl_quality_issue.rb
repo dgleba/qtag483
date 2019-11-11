@@ -94,6 +94,18 @@ class TblQualityIssue < ApplicationRecord
     end    
   end
 
+  # get document remvoe/delete urls..
+  def documentremove
+    if self.documents.attached?
+      document_urls = self.documents.map do |adoc| 
+          Rails.application.routes.url_helpers.delete_document_attachment_tbl_quality_issue_url(adoc, only_path: true)
+      end 
+    else
+      nil
+    end    
+  end
+
+
 
   # Cast numbers to string so ransacker can search them like text
 
