@@ -8,6 +8,9 @@ class TblQualityIssue < ApplicationRecord
   # self.primary_key = 'id_virtual_channel'
   #default_scope { order('date_time DESC') }
   #default_scope ->{ order('date_time DESC') }
+  #default_scope { order({begin_date: :desc}, :name) }
+
+  default_scope { order({Date: :desc}, :PartID) }
 
   has_one_attached :picture01
   has_one_attached :picture02
