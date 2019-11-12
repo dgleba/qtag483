@@ -19,7 +19,7 @@
 #  echo "pmdsdata7-dkr-01.local" > /etc/hostname 
 
 echo "nameserver 10.4.1.200" >>/etc/resolv.conf
-echo "nameserver 8.8.8.8" >>/etc/resolv.conf
+# echo "nameserver 8.8.8.8" >>/etc/resolv.conf
 
 fil=/etc/hosts
 cp $fil $fil$(date +"__%Y.%m.%d_%H.%M.%S")
@@ -30,8 +30,14 @@ echo "127.0.1.1 brail484b53.local" >>/etc/hosts
 
 
 # Don't seem to need the backticks.. sed -i "/MAILER_DEF.*/i define(`SMART_HOST',`[MESG01.stackpole.ca]')dnl"  /etc/mail/sendmail.mc 
-if ! grep 'MESG01.stackpole.c' /etc/mail/sendmail.mc ; then
-  sed -i "/MAILER_DEF.*/i define('SMART_HOST','MESG01.stackpole.ca')dnl"  /etc/mail/sendmail.mc 
+if  grep 'MESG01.stackpole.c' /etc/mail/sendmail.mc ; then
+  # sed -i "/MAILER_DEF.*/i define('SMART_HOST','MESG01.stackpole.ca')dnl"  /etc/mail/sendmail.mc 
+  sed -i "/SMART_HOST/d"  /etc/mail/sendmail.mc 
+ 
+fi
+# Don't seem to need the backticks.. sed -i "/MAILER_DEF.*/i define(`SMART_HOST',`[MESG01.stackpole.ca]')dnl"  /etc/mail/sendmail.mc 
+if ! grep '10.5.1.210' /etc/mail/sendmail.mc ; then
+  sed -i "/MAILER_DEF.*/i define('SMART_HOST','10.5.1.210')dnl"  /etc/mail/sendmail.mc 
 fi
 
 if ! grep 'brail484b53.local' /etc/mail/sendmail.mc ; then
