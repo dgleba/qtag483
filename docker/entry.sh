@@ -48,6 +48,8 @@ make -C /etc/mail
 
 /etc/init.d/sendmail reload 
 
+bundle install
+
 if [ -f tmp/pids/server.pid ]; then
   rm tmp/pids/server.pid
 fi
