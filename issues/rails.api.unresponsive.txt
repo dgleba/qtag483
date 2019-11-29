@@ -32,6 +32,7 @@ gem 'rails', github: 'rails/rails',  :branch => '5-2-stable'
 
 _____________
 
+dc build
 
 web_1  | Running command bash -c  bundle exec rails s -p 3000 -b '0.0.0.0'
 web_1  | bundler: failed to load command: rails (/usr/local/bundle/bin/rails)
@@ -47,5 +48,14 @@ _____________
 
 seems better. Let's try it out more.
 
+
+
+get latest from git repo.
+
+
+dc stop
+git pull
+dc build
+dc up
 
 ----------------------------------------------------

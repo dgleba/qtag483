@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :tbl_cust_dispoistions
   # send email by button click on show  form...
     # get :product_email, to: 'products#product_email', as: :product_email
   get :holdtag_email, to: 'tbl_quality_issues#holdtag_email', as: :holdtag_email
